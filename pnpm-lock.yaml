@@ -7,16 +7,16 @@ settings:
 dependencies:
   '@effect/platform':
     specifier: ^0.28.2
-    version: 0.28.2(@effect/schema@0.47.6)(effect@2.0.0-next.54)
+    version: 0.28.2(@effect/schema@0.47.6)(effect@2.0.0-next.55)
   '@effect/platform-node':
     specifier: ^0.29.2
-    version: 0.29.2(@effect/schema@0.47.6)(effect@2.0.0-next.54)
+    version: 0.29.2(@effect/schema@0.47.6)(effect@2.0.0-next.55)
   express:
     specifier: ^4.18.2
     version: 4.18.2
   schema-openapi:
     specifier: ^0.20.0
-    version: 0.20.0(@effect/schema@0.47.6)(effect@2.0.0-next.54)
+    version: 0.20.0(@effect/schema@0.47.6)(effect@2.0.0-next.55)
   swagger-ui-dist:
     specifier: ^5.9.3
     version: 5.9.3
@@ -33,7 +33,7 @@ devDependencies:
     version: 0.3.2(fast-check@3.13.2)(tsx@4.1.1)(typescript@5.2.2)
   '@effect/schema':
     specifier: ^0.47.6
-    version: 0.47.6(effect@2.0.0-next.54)(fast-check@3.13.2)
+    version: 0.47.6(effect@2.0.0-next.55)(fast-check@3.13.2)
   '@trivago/prettier-plugin-sort-imports':
     specifier: ^4.3.0
     version: 4.3.0(prettier@3.0.3)
@@ -56,11 +56,11 @@ devDependencies:
     specifier: ^6.10.0
     version: 6.10.0(eslint@8.53.0)(typescript@5.2.2)
   effect:
-    specifier: 2.0.0-next.54
-    version: 2.0.0-next.54
+    specifier: 2.0.0-next.55
+    version: 2.0.0-next.55
   effect-log:
     specifier: ^0.22.2
-    version: 0.22.2(effect@2.0.0-next.54)
+    version: 0.22.2(effect@2.0.0-next.55)
   eslint:
     specifier: ^8.53.0
     version: 8.53.0
@@ -438,6 +438,20 @@ packages:
       mime: 3.0.0
     transitivePeerDependencies:
       - '@effect/schema'
+    dev: true
+
+  /@effect/platform-node@0.29.2(@effect/schema@0.47.6)(effect@2.0.0-next.55):
+    resolution: {integrity: sha512-1dhxBSa3NQhuTDRPFQKnpMPJ8hsWGPxIIYQbsJ/6oOADah9cZWWjqiUzTuvOnKHEMQcIc9glIjb0OvAhjSimBw==}
+    peerDependencies:
+      effect: 2.0.0-next.54
+    dependencies:
+      '@effect/platform': 0.28.2(@effect/schema@0.47.6)(effect@2.0.0-next.55)
+      busboy: 1.6.0
+      effect: 2.0.0-next.55
+      mime: 3.0.0
+    transitivePeerDependencies:
+      - '@effect/schema'
+    dev: false
 
   /@effect/platform@0.28.2(@effect/schema@0.47.6)(effect@2.0.0-next.54):
     resolution: {integrity: sha512-LLqA9dqPljn57Or2n2m74ogZbt4DNxwI6JRcl2ve7pxEMgX2xrVmGZ7VeWFYJbjFqIqaZ6rSOkbjSSGILyQkPQ==}
@@ -449,6 +463,19 @@ packages:
       effect: 2.0.0-next.54
       find-my-way: 7.7.0
       path-browserify: 1.0.1
+    dev: true
+
+  /@effect/platform@0.28.2(@effect/schema@0.47.6)(effect@2.0.0-next.55):
+    resolution: {integrity: sha512-LLqA9dqPljn57Or2n2m74ogZbt4DNxwI6JRcl2ve7pxEMgX2xrVmGZ7VeWFYJbjFqIqaZ6rSOkbjSSGILyQkPQ==}
+    peerDependencies:
+      '@effect/schema': ^0.47.3
+      effect: 2.0.0-next.54
+    dependencies:
+      '@effect/schema': 0.47.6(effect@2.0.0-next.55)(fast-check@3.13.2)
+      effect: 2.0.0-next.55
+      find-my-way: 7.7.0
+      path-browserify: 1.0.1
+    dev: false
 
   /@effect/schema@0.47.6(effect@2.0.0-next.54)(fast-check@3.13.2):
     resolution: {integrity: sha512-+pH1/ByUnWa71tirb3kYMdCfWXjmYvU/2wZOfG3vmF8XQWcR3WnIlI1R5DvVYxtLp872a1kDiYX618h6ta6w9g==}
@@ -457,6 +484,16 @@ packages:
       fast-check: ^3.13.2
     dependencies:
       effect: 2.0.0-next.54
+      fast-check: 3.13.2
+    dev: true
+
+  /@effect/schema@0.47.6(effect@2.0.0-next.55)(fast-check@3.13.2):
+    resolution: {integrity: sha512-+pH1/ByUnWa71tirb3kYMdCfWXjmYvU/2wZOfG3vmF8XQWcR3WnIlI1R5DvVYxtLp872a1kDiYX618h6ta6w9g==}
+    peerDependencies:
+      effect: 2.0.0-next.54
+      fast-check: ^3.13.2
+    dependencies:
+      effect: 2.0.0-next.55
       fast-check: 3.13.2
 
   /@esbuild/android-arm64@0.18.20:
@@ -1729,16 +1766,20 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: false
 
-  /effect-log@0.22.2(effect@2.0.0-next.54):
+  /effect-log@0.22.2(effect@2.0.0-next.55):
     resolution: {integrity: sha512-ZgXDCQ1QZE0sloGU0cWe8ZNGF8sRuWn+crHtzm3H4KQA7GmUoAbUsIFA7rBubGQsKI0LSdldsXGM1r+JfV+vGg==}
     peerDependencies:
       effect: 2.0.0-next.54
     dependencies:
-      effect: 2.0.0-next.54
+      effect: 2.0.0-next.55
     dev: true
 
   /effect@2.0.0-next.54:
     resolution: {integrity: sha512-qROhKMxlm6fpa90YRfWSgKeelDfhaDq2igPK+pIKupGehiCnZH4vd2qrY71HVZ10qZgXxh0VXpGyDQxJC+EQqw==}
+    dev: true
+
+  /effect@2.0.0-next.55:
+    resolution: {integrity: sha512-kNOB/HaDSdaFSDVXK2gyf4XcTKbKKlllyoS871uDyoJskcc+024sSOHnNioXZPgkqaz55a3mad4DFfLUIETwYQ==}
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -3757,14 +3798,14 @@ packages:
   /safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  /schema-openapi@0.20.0(@effect/schema@0.47.6)(effect@2.0.0-next.54):
+  /schema-openapi@0.20.0(@effect/schema@0.47.6)(effect@2.0.0-next.55):
     resolution: {integrity: sha512-NPP5Hkr3p49ctuMS9CVAuhXD5aNB2ru+BfPUhfSQnD4/BPr/LdyvcQva9HdUXDRt4ET5gj5j7jZlQ4ntsYh52A==}
     peerDependencies:
       '@effect/schema': ^0.47.2
       effect: 2.0.0-next.54
     dependencies:
-      '@effect/schema': 0.47.6(effect@2.0.0-next.54)(fast-check@3.13.2)
-      effect: 2.0.0-next.54
+      '@effect/schema': 0.47.6(effect@2.0.0-next.55)(fast-check@3.13.2)
+      effect: 2.0.0-next.55
     dev: false
 
   /semver@5.7.2:

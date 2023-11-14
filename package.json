@@ -55,7 +55,7 @@
     "@types/swagger-ui-express": "^4.1.6",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
-    "effect": "2.0.0-next.54",
+    "effect": "2.0.0-next.55",
     "effect-log": "^0.22.2",
     "eslint": "^8.53.0",
     "prettier": "^3.0.3",
@@ -74,6 +74,6 @@
   },
   "peerDependencies": {
     "@effect/schema": "^0.47.2",
-    "effect": "2.0.0-next.54"
+    "effect": "2.0.0-next.55"
   }
 }
