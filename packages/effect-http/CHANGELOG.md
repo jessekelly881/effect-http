@@ -1,5 +1,15 @@
 # effect-http
 
+## 0.71.4
+
+### Patch Changes
+
+- [#616](https://github.com/sukovanej/effect-http/pull/616) [`b491f7f`](https://github.com/sukovanej/effect-http/commit/b491f7f40fcd6db458f75aaf4dc1cc06a39029f4) Thanks [@sukovanej](https://github.com/sukovanej)! - Add `Handler.makeRaw`.
+
+- Updated dependencies [[`b491f7f`](https://github.com/sukovanej/effect-http/commit/b491f7f40fcd6db458f75aaf4dc1cc06a39029f4), [`b491f7f`](https://github.com/sukovanej/effect-http/commit/b491f7f40fcd6db458f75aaf4dc1cc06a39029f4), [`b491f7f`](https://github.com/sukovanej/effect-http/commit/b491f7f40fcd6db458f75aaf4dc1cc06a39029f4)]:
+  - effect-http-error@0.4.0
+  - effect-http-security@0.3.2
+
 ## 0.71.3
 
 ### Patch Changes
