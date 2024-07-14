@@ -1,5 +1,12 @@
 # effect-http-security
 
+## 0.3.2
+
+### Patch Changes
+
+- Updated dependencies [[`b491f7f`](https://github.com/sukovanej/effect-http/commit/b491f7f40fcd6db458f75aaf4dc1cc06a39029f4), [`b491f7f`](https://github.com/sukovanej/effect-http/commit/b491f7f40fcd6db458f75aaf4dc1cc06a39029f4), [`b491f7f`](https://github.com/sukovanej/effect-http/commit/b491f7f40fcd6db458f75aaf4dc1cc06a39029f4)]:
+  - effect-http-error@0.4.0
+
 ## 0.3.1
 
 ### Patch Changes
