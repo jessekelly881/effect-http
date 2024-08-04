@@ -1,5 +1,71 @@
 # effect-http
 
+## 0.77.3
+
+### Patch Changes
+
+- [#647](https://github.com/sukovanej/effect-http/pull/647) [`6793bbd`](https://github.com/sukovanej/effect-http/commit/6793bbde8980bb79b83d3f89e2142672cee24c19) Thanks [@sukovanej](https://github.com/sukovanej)! - Fix #646 - securitySchemes was overwritten by reference schemas.
+
+## 0.77.2
+
+### Patch Changes
+
+- [#643](https://github.com/sukovanej/effect-http/pull/643) [`88f24aa`](https://github.com/sukovanej/effect-http/commit/88f24aacc054e0de69bcd519842ddf0faaf3d22b) Thanks [@sukovanej](https://github.com/sukovanej)! - Use an identifier annotation of a class schema as an OpenApi reference identifier.
+
+## 0.77.1
+
+### Patch Changes
+
+- [#641](https://github.com/sukovanej/effect-http/pull/641) [`499a183`](https://github.com/sukovanej/effect-http/commit/499a1834d443beadeb0ff1e7a909cb08c1518f44) Thanks [@sukovanej](https://github.com/sukovanej)! - Change internal structure of `Handler` to give it an ability to handler multiple endpoints.
+
+- [#642](https://github.com/sukovanej/effect-http/pull/642) [`215743c`](https://github.com/sukovanej/effect-http/commit/215743c91e1cfa95dd38378cd8096f6afa71d053) Thanks [@sukovanej](https://github.com/sukovanej)! - Update effect packages.
+
+- [#638](https://github.com/sukovanej/effect-http/pull/638) [`d942cb3`](https://github.com/sukovanej/effect-http/commit/d942cb3805013b3b3b910f7a3dbce03ee036a1b5) Thanks [@sukovanej](https://github.com/sukovanej)! - Exclude `HttpError.HttpError` from the Handler error channel.
+
+## 0.77.0
+
+### Minor Changes
+
+- [#636](https://github.com/sukovanej/effect-http/pull/636) [`bf12c11`](https://github.com/sukovanej/effect-http/commit/bf12c11f440541161b6e807d437f54627265def2) Thanks [@sukovanej](https://github.com/sukovanej)! - Make `HttpError` tagged.
+
+### Patch Changes
+
+- [#635](https://github.com/sukovanej/effect-http/pull/635) [`ea261af`](https://github.com/sukovanej/effect-http/commit/ea261afff36bb3fd6b0eeade8a511a111f37e851) Thanks [@sukovanej](https://github.com/sukovanej)! - Fix `HttpError.isHttpError` type signature.
+
+## 0.76.0
+
+### Minor Changes
+
+- [#631](https://github.com/sukovanej/effect-http/pull/631) [`621954d`](https://github.com/sukovanej/effect-http/commit/621954d011359e10a3ffd5cfbab8a722d222db54) Thanks [@sukovanej](https://github.com/sukovanej)! - Remove `Middlewares.basic`, use the `Security` module instead.
+
+- [#631](https://github.com/sukovanej/effect-http/pull/631) [`621954d`](https://github.com/sukovanej/effect-http/commit/621954d011359e10a3ffd5cfbab8a722d222db54) Thanks [@sukovanej](https://github.com/sukovanej)! - Remove `Middlewares.cors`, use the `@effect/platform`'s `HttpMiddlewares.cors` instead.
+
+- [#631](https://github.com/sukovanej/effect-http/pull/631) [`621954d`](https://github.com/sukovanej/effect-http/commit/621954d011359e10a3ffd5cfbab8a722d222db54) Thanks [@sukovanej](https://github.com/sukovanej)! - Remove `Middlewares.endpointCallsMetric`, use the opentelemetry instead.
+
+### Patch Changes
+
+- [#634](https://github.com/sukovanej/effect-http/pull/634) [`cc94f2f`](https://github.com/sukovanej/effect-http/commit/cc94f2f48dc120cf5be4bc7be9ca07fc9ea303d1) Thanks [@sukovanej](https://github.com/sukovanej)! - Update @effect/\* dependencies.
+
+## 0.75.0
+
+### Minor Changes
+
+- [#629](https://github.com/sukovanej/effect-http/pull/629) [`41427e7`](https://github.com/sukovanej/effect-http/commit/41427e7bedf444e9549fd1fd5201dde9c082ff3f) Thanks [@sukovanej](https://github.com/sukovanej)! - Add `QuerySchema.Int`, `QuerySchema.number` and `QuerySchema.int`.
+
+## 0.74.0
+
+### Minor Changes
+
+- [#625](https://github.com/sukovanej/effect-http/pull/625) [`16c76f7`](https://github.com/sukovanej/effect-http/commit/16c76f7b41d34647b5efbb565fcd1475ac5d76b3) Thanks [@sukovanej](https://github.com/sukovanej)! - Change `Middlewares.accessLog` level input to `LogLevel.LogLevel`.
+
+- [#628](https://github.com/sukovanej/effect-http/pull/628) [`8481868`](https://github.com/sukovanej/effect-http/commit/84818689b8f1b7d485bbe9c8d45579436a3ba75f) Thanks [@sukovanej](https://github.com/sukovanej)! - Update @effect/platform packages.
+
+- [#623](https://github.com/sukovanej/effect-http/pull/623) [`c45b838`](https://github.com/sukovanej/effect-http/commit/c45b83891169efddadd05d5336927f27c3d1e523) Thanks [@sukovanej](https://github.com/sukovanej)! - Merge `HttpError` and `Security` back into the `effect-http` package.
+
+### Patch Changes
+
+- [#628](https://github.com/sukovanej/effect-http/pull/628) [`8481868`](https://github.com/sukovanej/effect-http/commit/84818689b8f1b7d485bbe9c8d45579436a3ba75f) Thanks [@sukovanej](https://github.com/sukovanej)! - Add `QuerySchema.number`.
+
 ## 0.73.0
 
 ### Minor Changes

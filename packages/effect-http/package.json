@@ -1,7 +1,7 @@
 {
   "name": "effect-http",
   "type": "module",
-  "version": "0.73.0",
+  "version": "0.77.3",
   "license": "MIT",
   "author": "Milan Suk <Milansuk@email.cz>",
   "description": "High-level declarative HTTP API for effect-ts",
@@ -30,19 +30,15 @@
     "test": "vitest",
     "coverage": "vitest --coverage"
   },
-  "dependencies": {
-    "effect-http-error": "workspace:^",
-    "effect-http-security": "workspace:^"
-  },
   "peerDependencies": {
-    "@effect/platform": "^0.58.0",
-    "@effect/schema": "^0.68.0",
-    "effect": "^3.5.0"
+    "@effect/platform": "^0.61.0",
+    "@effect/schema": "^0.70.0",
+    "effect": "^3.6.0"
   },
   "devDependencies": {
     "@apidevtools/swagger-parser": "^10.1.0",
-    "@effect/platform": "^0.58.27",
-    "@effect/schema": "^0.68.23",
-    "effect": "^3.5.3"
+    "@effect/platform": "^0.61.1",
+    "@effect/schema": "^0.70.0",
+    "effect": "^3.6.0"
   }
 }

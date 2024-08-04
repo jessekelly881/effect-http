@@ -6,10 +6,25 @@ export const Number = Schema.NumberFromString.pipe(
   circular.annotate(() => ({ type: "number", description: "a number" }))
 )
 
+export const number = <A, R>(schema: Schema.Schema<A, number, R>) =>
+  Schema.compose(Schema.NumberFromString, schema, { strict: true }).pipe(
+    circular.annotate(() => ({ type: "number", description: "a number" }))
+  )
+
+/** @internal */
+export const Int = Schema.compose(Schema.NumberFromString, Schema.Int).pipe(
+  circular.annotate(() => ({ type: "integer", description: "an integer" }))
+)
+
+export const int = <A, R>(schema: Schema.Schema<A, number, R>) =>
+  Schema.compose(Int, schema, { strict: true }).pipe(
+    circular.annotate(() => ({ type: "integer", description: "an integer" }))
+  )
+
 /** @internal */
 export const Array = <A, R>(
   schema: Schema.Schema<A, string, R>
-): Schema.optionalWithOptions<
+): Schema.optionalWith<
   Schema.Schema<ReadonlyArray<A>, string | ReadonlyArray<string>, R>,
   { exact: true; default: () => [] }
 > => {
@@ -20,9 +35,7 @@ export const Array = <A, R>(
   const arraySchema = Schema.Array(schema)
   const stringToArraySchema = Schema.compose(stringToStringArraySchema, arraySchema, { strict: true })
 
-  Schema.withDefaults
-
-  return Schema.optional(
+  return Schema.optionalWith(
     Schema.Union(stringToArraySchema, arraySchema).pipe(
       circular.annotate((compile) => ({ type: "array", items: compile(schema) }))
     ),

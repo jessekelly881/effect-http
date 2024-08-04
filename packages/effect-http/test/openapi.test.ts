@@ -3,8 +3,7 @@ import { Schema } from "@effect/schema"
 import { pipe } from "effect"
 import { expect, it, test } from "vitest"
 
-import { Api, ApiGroup, OpenApi, QuerySchema } from "effect-http"
-import { Security } from "effect-http-security"
+import { Api, ApiGroup, OpenApi, QuerySchema, Security } from "effect-http"
 
 import { describe } from "node:test"
 
@@ -419,7 +418,7 @@ describe("enums", () => {
 
 describe("records", () => {
   it("string to string map", () => {
-    const schema = Schema.Record(Schema.String, Schema.String)
+    const schema = Schema.Record({ key: Schema.String, value: Schema.String })
 
     expect(OpenApi.makeSchema(schema)).toStrictEqual({
       type: "object",
@@ -431,13 +430,13 @@ describe("records", () => {
   })
 
   it("string to object map", () => {
-    const schema = Schema.Record(
-      Schema.String,
-      Schema.Struct({
-        code: Schema.optional(Schema.Number, { exact: true }),
+    const schema = Schema.Record({
+      key: Schema.String,
+      value: Schema.Struct({
+        code: Schema.optionalWith(Schema.Number, { exact: true }),
         text: Schema.optional(Schema.String)
       })
-    )
+    })
 
     expect(OpenApi.makeSchema(schema)).toStrictEqual({
       type: "object",
@@ -1361,13 +1360,13 @@ describe("component schema and reference", () => {
   // reported in https://github.com/sukovanej/effect-http/issues/471
   it.each(
     [
-      Schema.optional(Schema.Date, { nullable: true, exact: true, as: "Option" }),
-      Schema.optional(Schema.Date, { nullable: true, default: () => new Date() }),
-      Schema.optional(Schema.Date, { exact: true, default: () => new Date() }),
-      Schema.optional(Schema.Date, { exact: true, as: "Option" }),
-      Schema.optional(Schema.Date, { nullable: true, as: "Option" }),
-      Schema.optional(Schema.Date, { as: "Option" }),
-      Schema.optional(Schema.Date, { exact: true }),
+      Schema.optionalWith(Schema.Date, { nullable: true, exact: true, as: "Option" }),
+      Schema.optionalWith(Schema.Date, { nullable: true, default: () => new Date() }),
+      Schema.optionalWith(Schema.Date, { exact: true, default: () => new Date() }),
+      Schema.optionalWith(Schema.Date, { exact: true, as: "Option" }),
+      Schema.optionalWith(Schema.Date, { nullable: true, as: "Option" }),
+      Schema.optionalWith(Schema.Date, { as: "Option" }),
+      Schema.optionalWith(Schema.Date, { exact: true }),
       Schema.optional(Schema.Date)
     ]
   )("optional variants", async (fieldSchema) => {
@@ -1432,5 +1431,83 @@ describe("component schema and reference", () => {
         "tags": ["default"]
       }
     })
+  })
+
+  it("reference with class schema", async () => {
+    class ReferencedType extends Schema.Class<ReferencedType>("ReferencedType")(
+      Schema.Struct({ something: Schema.String })
+    ) {}
+
+    const api = Api.make({ title: "test", version: "0.1" }).pipe(
+      Api.addEndpoint(
+        Api.post("getPet", "/pet").pipe(Api.setResponseBody(ReferencedType))
+      )
+    )
+    const spec = OpenApi.make(api)
+
+    const openapi = {
+      openapi: "3.0.3",
+      info: { title: "test", version: "0.1" },
+      tags: [{ "name": "default" }],
+      paths: {
+        "/pet": {
+          post: {
+            tags: ["default"],
+            operationId: "getPet",
+            responses: {
+              200: {
+                content: {
+                  "application/json": {
+                    schema: {
+                      $ref: "#/components/schemas/ReferencedType"
+                    }
+                  }
+                },
+                description: "Response 200"
+              }
+            }
+          }
+        }
+      },
+      components: {
+        schemas: {
+          ReferencedType: {
+            properties: {
+              something: {
+                description: "a string",
+                type: "string"
+              }
+            },
+            required: ["something"],
+            type: "object"
+          }
+        }
+      }
+    }
+    expect(spec).toStrictEqual(openapi)
+
+    // @ts-expect-error
+    SwaggerParser.validate(spec)
+  })
+
+  it("reference and security", async () => {
+    class ReferencedType extends Schema.Class<ReferencedType>("ReferencedType")(
+      Schema.Struct({ something: Schema.String })
+    ) {}
+
+    const api = Api.make({ title: "test", version: "0.1" }).pipe(
+      Api.addEndpoint(
+        Api.post("getPet", "/pet").pipe(
+          Api.setResponseBody(ReferencedType),
+          Api.setSecurity(Security.basic())
+        )
+      )
+    )
+    const spec = OpenApi.make(api)
+    expect(spec.components?.schemas).toBeTruthy()
+    expect(spec.components?.securitySchemes).toBeTruthy()
+
+    // @ts-expect-error
+    SwaggerParser.validate(spec)
   })
 })

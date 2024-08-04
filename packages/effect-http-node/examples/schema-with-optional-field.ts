@@ -1,13 +1,12 @@
 import { NodeRuntime } from "@effect/platform-node"
 import { Schema } from "@effect/schema"
-import { Effect, Option, pipe } from "effect"
+import { Effect, Logger, LogLevel, Option, pipe } from "effect"
 import { Api, RouterBuilder } from "effect-http"
 
 import { NodeServer } from "effect-http-node"
-import { debugLogger } from "./_utils.js"
 
 const Response = Schema.Struct({
-  foo: Schema.optional(Schema.String, { as: "Option" }),
+  foo: Schema.optionalWith(Schema.String, { as: "Option" }),
   bar: Schema.Option(Schema.String)
 })
 
@@ -27,6 +26,7 @@ const app = pipe(
 pipe(
   app,
   NodeServer.listen({ port: 4000 }),
-  Effect.provide(debugLogger),
+  Effect.provide(Logger.pretty),
+  Logger.withMinimumLogLevel(LogLevel.All),
   NodeRuntime.runMain
 )

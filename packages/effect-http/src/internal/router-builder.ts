@@ -1,7 +1,6 @@
 import type * as HttpApp from "@effect/platform/HttpApp"
 import * as HttpRouter from "@effect/platform/HttpRouter"
 import type * as HttpServerRequest from "@effect/platform/HttpServerRequest"
-import * as HttpError from "effect-http-error/HttpError"
 import * as Effect from "effect/Effect"
 import { dual } from "effect/Function"
 import * as Pipeable from "effect/Pipeable"
@@ -10,6 +9,7 @@ import type * as Scope from "effect/Scope"
 import * as Api from "../Api.js"
 import * as ApiEndpoint from "../ApiEndpoint.js"
 import * as Handler from "../Handler.js"
+import * as HttpError from "../HttpError.js"
 import * as OpenApi from "../OpenApi.js"
 import type * as RouterBuilder from "../RouterBuilder.js"
 import * as SwaggerRouter from "../SwaggerRouter.js"
@@ -120,11 +120,11 @@ export const handle = (...args: Array<any>) => (builder: RouterBuilder.RouterBui
   }
 
   const handler = args[0] as Handler.Handler.Any
-  const remainingEndpoints = removeRemainingEndpoint(
-    builder,
-    ApiEndpoint.getId(Handler.getEndpoint(handler))
+  const handlerEndpointIds = Handler.getEndpoints(handler).map((e) => ApiEndpoint.getId(e))
+  const remainingEndpoints = builder.remainingEndpoints.filter((e1) =>
+    !handlerEndpointIds.includes(ApiEndpoint.getId(e1))
   )
-  const router = addRoute(builder.router, Handler.getRoute(handler))
+  const router = HttpRouter.concat(builder.router, Handler.getRouter(handler))
 
   return new RouterBuilderImpl(remainingEndpoints, builder.api, router, builder.options)
 }

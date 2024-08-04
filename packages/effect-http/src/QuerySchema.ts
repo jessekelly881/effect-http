@@ -17,9 +17,27 @@ export const Number: Schema.Schema<number, string> = internal.Number
  * @category schema
  * @since 1.0.0
  */
+export const number: <A, R>(schema: Schema.Schema<A, number, R>) => Schema.Schema<A, string, R> = internal.number
+
+/**
+ * @category schema
+ * @since 1.0.0
+ */
+export const Int: Schema.Schema<number, string> = internal.Int
+
+/**
+ * @category schema
+ * @since 1.0.0
+ */
+export const int: <A, R>(schema: Schema.Schema<A, number, R>) => Schema.Schema<A, string, R> = internal.int
+
+/**
+ * @category schema
+ * @since 1.0.0
+ */
 export const Array: <A, R>(
   schema: Schema.Schema<A, string, R>
-) => Schema.optionalWithOptions<
+) => Schema.optionalWith<
   Schema.Schema<ReadonlyArray<A>, string | ReadonlyArray<string>, R>,
   { exact: true; default: () => [] }
 > = internal.Array
